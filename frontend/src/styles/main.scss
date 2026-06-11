@@ -17,6 +17,7 @@ body,
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(222, 232, 242, 0.85), transparent 28%),
     linear-gradient(180deg, #f7fafc 0%, #eef3f7 100%);
@@ -96,7 +97,7 @@ label {
 }
 
 .topbar-inner {
-  width: min(1440px, calc(100vw - 2rem));
+  width: min(1440px, calc(100% - 2rem));
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(220px, 1.1fr) auto minmax(220px, 0.9fr);
@@ -118,6 +119,7 @@ label {
 .brand-subtitle {
   color: #5f6f82;
   font-size: 0.84rem;
+  overflow-wrap: anywhere;
 }
 
 .nav-links {
@@ -165,6 +167,7 @@ label {
 
 .session-name {
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .session-points {
@@ -173,13 +176,34 @@ label {
 }
 
 .app-main {
-  width: min(1440px, calc(100vw - 2rem));
+  width: min(1440px, calc(100% - 2rem));
   margin: 0 auto;
   padding: 2rem 0 3rem;
 }
 
 .auth-main {
-  width: min(1200px, calc(100vw - 2rem));
+  width: min(1200px, calc(100% - 2rem));
+}
+
+.topbar-inner,
+.app-main,
+.page,
+.page-hero > *,
+.surface-card,
+.metric-card,
+.match-card,
+.match-meta,
+.match-teams,
+.match-side,
+.group-card,
+.summary-panel,
+.thirds-card,
+.admin-layout,
+.admin-primary,
+.admin-side,
+.section-title,
+.user-cell {
+  min-width: 0;
 }
 
 .page {
@@ -208,6 +232,7 @@ label {
   color: #58697b;
   font-size: 1.02rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .eyebrow {
@@ -348,6 +373,7 @@ label {
 .section-title h2 {
   margin: 0;
   font-size: 1.8rem;
+  overflow-wrap: anywhere;
 }
 
 .section-title span {
@@ -403,6 +429,7 @@ label {
 .deadline-label {
   margin: 0;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .match-teams {
@@ -420,6 +447,7 @@ label {
 .team-block strong {
   font-size: 1.5rem;
   line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .team-block-away {
@@ -847,10 +875,32 @@ label {
   }
 }
 
+@media (max-width: 1024px) {
+  .match-card,
+  .field-grid,
+  .group-grid,
+  .rules-grid,
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .match-teams {
+    grid-template-columns: 1fr;
+  }
+
+  .team-block-away {
+    order: 0;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+}
+
 @media (max-width: 860px) {
   .app-main,
   .topbar-inner {
-    width: min(100vw - 1.25rem, 1440px);
+    width: min(1440px, calc(100% - 1.25rem));
   }
 
   .topbar-inner {
@@ -864,20 +914,10 @@ label {
   }
 
   .field-grid,
-  .group-grid,
-  .rules-grid,
   .admin-form-grid,
-  .stats-grid,
-  .match-card {
+  .rules-grid,
+  .stats-grid {
     grid-template-columns: 1fr;
-  }
-
-  .match-teams {
-    grid-template-columns: 1fr;
-  }
-
-  .team-block-away {
-    order: 0;
   }
 
   .sticky-actions,
@@ -889,5 +929,14 @@ label {
 
   .score-inputs {
     grid-template-columns: 64px auto 64px;
+  }
+
+  .session-panel {
+    flex-wrap: wrap;
+  }
+
+  .summary-progress div {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

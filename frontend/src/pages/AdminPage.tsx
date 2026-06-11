@@ -7,8 +7,8 @@ export function AdminPage({ user }: { user: User | null }) {
   const [matches, setMatches] = useState<Match[]>([]);
   const [summary, setSummary] = useState<AdminSummary | null>(null);
   const [matchId, setMatchId] = useState("");
-  const [homeScore, setHomeScore] = useState(0);
-  const [awayScore, setAwayScore] = useState(0);
+  const [homeScore, setHomeScore] = useState("");
+  const [awayScore, setAwayScore] = useState("");
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
   const [standingsJson, setStandingsJson] = useState(
@@ -55,8 +55,16 @@ export function AdminPage({ user }: { user: User | null }) {
     setMessage("");
     setError("");
 
+    if (homeScore === "" || awayScore === "") {
+      setError("Completá ambos goles antes de guardar.");
+      return;
+    }
+
     try {
-      const result = await matchesApi.updateResult(matchId, { homeScore, awayScore });
+      const result = await matchesApi.updateResult(matchId, {
+        homeScore: Number(homeScore),
+        awayScore: Number(awayScore)
+      });
       setMessage(`Resultado guardado y ${result.recalculatedPredictions} predicciones recalculadas.`);
       await load();
     } catch (err) {
@@ -161,12 +169,12 @@ export function AdminPage({ user }: { user: User | null }) {
 
             <label>
               <span>Goles local</span>
-              <input type="number" min="0" max="30" value={homeScore} onChange={(event) => setHomeScore(Number(event.target.value))} />
+              <input type="number" min="0" max="30" value={homeScore} onChange={(event) => setHomeScore(event.target.value)} />
             </label>
 
             <label>
               <span>Goles visitante</span>
-              <input type="number" min="0" max="30" value={awayScore} onChange={(event) => setAwayScore(Number(event.target.value))} />
+              <input type="number" min="0" max="30" value={awayScore} onChange={(event) => setAwayScore(event.target.value)} />
             </label>
 
             <div className="full-width action-row">
