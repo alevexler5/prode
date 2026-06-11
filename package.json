@@ -1,0 +1,21 @@
+{
+  "name": "prode-mundial",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace backend",
+    "dev:backend": "npm run dev --workspace backend",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "setup:local": "npm install && npm run prisma:generate --workspace backend && npm run db:migrate && npm run db:seed",
+    "db:migrate": "npm run prisma:migrate --workspace backend",
+    "db:seed": "npm run seed --workspace backend",
+    "db:reset": "npm run prisma:reset --workspace backend",
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "test": "npm run test --workspace backend && npm run test --workspace frontend",
+    "lint": "npm run lint --workspace backend && npm run lint --workspace frontend"
+  }
+}

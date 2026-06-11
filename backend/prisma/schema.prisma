@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum MatchPhase {
+  groups
+  round_of_32
+  round_of_16
+  quarterfinal
+  semifinal
+  third_place
+  final
+}
+
+enum MatchStatus {
+  scheduled
+  blocked
+  in_progress
+  finished
+}
+
+enum QualifiedAs {
+  group_winner
+  group_runner_up
+  best_third
+  eliminated
+}
+
+model User {
+  id                    String                 @id @default(cuid())
+  name                  String
+  email                 String                 @unique
+  passwordHash          String
+  isAdmin               Boolean                @default(false)
+  totalPoints           Int                    @default(0)
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  predictions           Prediction[]
+  groupPredictions      GroupPrediction[]
+  bestThirdsPrediction  BestThirdsPrediction?
+  adminActions          AdminActionLog[]
+
+  @@index([totalPoints])
+  @@map("users")
+}
+
+model Team {
+  id                    String    @id @default(cuid())
+  code                  String    @unique
+  name                  String    @unique
+  group                 String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([group])
+  @@map("teams")
+}
+
+model Match {
+  id                    String        @id
+  phase                 MatchPhase
+  group                 String?
+  homeTeam              String?
+  awayTeam              String?
+  homePlaceholder       String?
+  awayPlaceholder       String?
+  kickoff               DateTime
+  venue                 String
+  stadium               String
+  status                MatchStatus   @default(scheduled)
+  isPredictionEnabled   Boolean       @default(false)
+  realHomeScore         Int?
+  realAwayScore         Int?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+  predictions           Prediction[]
+
+  @@index([kickoff])
+  @@index([phase])
+  @@index([group])
+  @@index([status])
+  @@index([isPredictionEnabled])
+  @@map("matches")
+}
+
+model Prediction {
+  id                    String    @id @default(cuid())
+  userId                String
+  matchId               String
+  predictedHomeScore    Int
+  predictedAwayScore    Int
+  points                Int       @default(0)
+  exactHit              Boolean   @default(false)
+  outcomeHit            Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  match                 Match     @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, matchId])
+  @@index([userId])
+  @@index([matchId])
+  @@map("predictions")
+}
+
+model GroupPrediction {
+  id                    String    @id @default(cuid())
+  userId                String
+  group                 String
+  predictedFirstTeam    String
+  predictedSecondTeam   String
+  points                Int       @default(0)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, group])
+  @@index([userId])
+  @@index([group])
+  @@map("group_predictions")
+}
+
+model BestThirdsPrediction {
+  id                    String    @id @default(cuid())
+  userId                String    @unique
+  predictedTeams        String[]
+  points                Int       @default(0)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("best_thirds_predictions")
+}
+
+model GroupStanding {
+  id                    String       @id @default(cuid())
+  group                 String
+  team                  String
+  position              Int
+  points                Int
+  goalDifference        Int
+  goalsFor              Int
+  qualifiedAs           QualifiedAs
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
+
+  @@unique([group, team])
+  @@index([group])
+  @@index([position])
+  @@index([qualifiedAs])
+  @@map("group_standings")
+}
+
+model AdminActionLog {
+  id                    String    @id @default(cuid())
+  userId                String
+  action                String
+  entity                String
+  entityId              String
+  details               Json?
+  createdAt             DateTime  @default(now())
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@index([entity])
+  @@index([entityId])
+  @@index([createdAt])
+  @@map("admin_action_logs")
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prode Mundial | Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#8192a7",
+                      "primary-container": "#1a2b3c",
+                      "tertiary-fixed": "#feddb5",
+                      "inverse-on-surface": "#eef1f3",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "primary": "#041627",
+                      "surface-dim": "#d7dadc",
+                      "surface-bright": "#f7fafc",
+                      "primary-fixed-dim": "#b7c8de",
+                      "inverse-surface": "#2d3133",
+                      "surface-container": "#ebeef0",
+                      "on-secondary-container": "#3f6d38",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#bcf0ae",
+                      "on-primary-fixed": "#0b1d2d",
+                      "tertiary-fixed-dim": "#e1c29b",
+                      "on-tertiary-fixed-variant": "#584326",
+                      "on-tertiary-fixed": "#281802",
+                      "primary-fixed": "#d2e4fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary": "#3b6934",
+                      "outline": "#74777d",
+                      "surface-container-high": "#e5e9eb",
+                      "on-primary-fixed-variant": "#38485a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#44474c",
+                      "on-error-container": "#93000a",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#4f6073",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#b9eeab",
+                      "surface": "#f7fafc",
+                      "on-secondary-fixed-variant": "#23501e",
+                      "tertiary-container": "#38260b",
+                      "tertiary": "#211200",
+                      "on-background": "#181c1e",
+                      "surface-variant": "#e0e3e5",
+                      "outline-variant": "#c4c6cd",
+                      "on-tertiary-container": "#a88c69",
+                      "inverse-primary": "#b7c8de",
+                      "background": "#f7fafc",
+                      "on-surface": "#181c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "margin-desktop": "32px",
+                      "base": "4px",
+                      "sm": "8px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "data-mono": ["Inter"],
+                      "display-score": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "display-score": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .auth-background {
+            background-color: #F4F7F9;
+            position: relative;
+            overflow: hidden;
+        }
+        .auth-background::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(#1a2b3c 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.03;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<!-- Subtle Brand Background Section -->
+<main class="auth-background flex-grow flex items-center justify-center px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Registration/Login Container -->
+<div class="relative w-full max-w-[420px] z-10">
+<!-- Logo Anchor -->
+<div class="text-center mb-lg">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">
+                    Prode Mundial
+                </h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-xs uppercase tracking-widest">
+                    Sports Analytics &amp; League Intelligence
+                </p>
+</div>
+<!-- Auth Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg md:p-xl rounded-none shadow-sm transition-all duration-300" id="authCard">
+<!-- Tab Headers -->
+<div class="flex gap-md mb-lg border-b border-outline-variant">
+<button class="font-label-caps text-label-caps pb-sm border-b-2 border-primary text-primary transition-all" id="loginTab" onclick="switchMode('login')">
+                        LOGIN
+                    </button>
+<button class="font-label-caps text-label-caps pb-sm border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-all" id="registerTab" onclick="switchMode('register')">
+                        REGISTRATION
+                    </button>
+</div>
+<!-- Form Section -->
+<form class="space-y-md" id="authForm">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">mail</span>
+<input class="w-full pl-10 pr-md py-sm bg-surface-container border border-outline-variant rounded-none text-body-sm focus:ring-0 focus:border-primary transition-colors" id="email" name="email" placeholder="name@analytics.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="password">Password</label>
+<a class="font-label-caps text-label-caps text-primary hover:underline" href="#" id="forgotPassword">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">lock</span>
+<input class="w-full pl-10 pr-md py-sm bg-surface-container border border-outline-variant rounded-none text-body-sm focus:ring-0 focus:border-primary transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Registration Exclusive Fields (Hidden by default) -->
+<div class="hidden space-y-md" id="registerFields">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="fullName">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">person</span>
+<input class="w-full pl-10 pr-md py-sm bg-surface-container border border-outline-variant rounded-none text-body-sm focus:ring-0 focus:border-primary transition-colors" id="fullName" name="fullName" placeholder="Enter your full name" type="text"/>
+</div>
+</div>
+<div class="flex items-start gap-sm mt-sm">
+<input class="mt-1 rounded-none border-outline-variant text-primary focus:ring-0" id="terms" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant" for="terms">
+                                I agree to the <a class="text-primary underline" href="#">Terms of Service</a> and <a class="text-primary underline" href="#">Privacy Policy</a>.
+                            </label>
+</div>
+</div>
+<!-- CTA Buttons -->
+<div class="pt-sm space-y-sm">
+<button class="w-full bg-primary text-on-primary font-label-caps text-label-caps py-md uppercase tracking-wider hover:opacity-90 active:opacity-100 transition-all" id="submitBtn" type="submit">
+                            Access Platform
+                        </button>
+<div class="relative flex items-center py-sm">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 font-label-caps text-label-caps text-outline uppercase">OR</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<button class="w-full border border-secondary text-secondary font-label-caps text-label-caps py-md uppercase tracking-wider hover:bg-secondary-container transition-all flex items-center justify-center gap-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">account_circle</span>
+                            Continue with Google
+                        </button>
+</div>
+</form>
+<!-- Footer Switch -->
+<div class="mt-lg text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="switchText">
+                        Don't have an account? 
+                        <button class="text-primary font-semibold hover:underline" onclick="switchMode('register')">Create an account</button>
+</p>
+</div>
+</div>
+<!-- Footer Compliance -->
+<footer class="mt-lg text-center">
+<p class="font-label-caps text-[10px] text-outline uppercase tracking-widest">
+                    © 2024 Prode Mundial. Secure Sports Intelligence.
+                </p>
+</footer>
+</div>
+<!-- Atmospheric Background Element -->
+<div class="absolute right-[-10%] bottom-[-10%] opacity-10 pointer-events-none select-none hidden lg:block">
+<div class="w-[600px] h-[600px] border border-primary rounded-full flex items-center justify-center">
+<div class="w-[450px] h-[450px] border border-primary rounded-full"></div>
+</div>
+</div>
+</main>
+<script>
+        function switchMode(mode) {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const registerFields = document.getElementById('registerFields');
+            const submitBtn = document.getElementById('submitBtn');
+            const switchText = document.getElementById('switchText');
+            const forgotPassword = document.getElementById('forgotPassword');
+
+            if (mode === 'register') {
+                loginTab.classList.remove('border-primary', 'text-primary');
+                loginTab.classList.add('border-transparent', 'text-on-surface-variant');
+                registerTab.classList.add('border-primary', 'text-primary');
+                registerTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                
+                registerFields.classList.remove('hidden');
+                submitBtn.innerText = 'Create Account';
+                forgotPassword.classList.add('invisible');
+                switchText.innerHTML = 'Already have an account? <button onclick="switchMode(\'login\')" class="text-primary font-semibold hover:underline">Log in instead</button>';
+            } else {
+                registerTab.classList.remove('border-primary', 'text-primary');
+                registerTab.classList.add('border-transparent', 'text-on-surface-variant');
+                loginTab.classList.add('border-primary', 'text-primary');
+                loginTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                
+                registerFields.classList.add('hidden');
+                submitBtn.innerText = 'Access Platform';
+                forgotPassword.classList.remove('invisible');
+                switchText.innerHTML = 'Don\'t have an account? <button onclick="switchMode(\'register\')" class="text-primary font-semibold hover:underline">Create an account</button>';
+            }
+        }
+
+        // Simple visual feedback for form submission
+        document.getElementById('authForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            btn.innerText = 'AUTHENTICATING...';
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.classList.remove('opacity-50');
+                alert('Authentication system simulation: This would connect to your backend.');
+            }, 1500);
+        });
+    </script>
+</body></html>

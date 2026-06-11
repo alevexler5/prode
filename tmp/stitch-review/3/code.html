@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Stage Predictions | Prode Mundial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#8192a7",
+                    "primary-container": "#1a2b3c",
+                    "tertiary-fixed": "#feddb5",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#041627",
+                    "surface-dim": "#d7dadc",
+                    "surface-bright": "#f7fafc",
+                    "primary-fixed-dim": "#b7c8de",
+                    "inverse-surface": "#2d3133",
+                    "surface-container": "#ebeef0",
+                    "on-secondary-container": "#3f6d38",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-primary-fixed": "#0b1d2d",
+                    "tertiary-fixed-dim": "#e1c29b",
+                    "on-tertiary-fixed-variant": "#584326",
+                    "on-tertiary-fixed": "#281802",
+                    "primary-fixed": "#d2e4fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary": "#3b6934",
+                    "outline": "#74777d",
+                    "surface-container-high": "#e5e9eb",
+                    "on-primary-fixed-variant": "#38485a",
+                    "surface-container-low": "#f1f4f6",
+                    "on-secondary-fixed": "#002201",
+                    "secondary-container": "#b9eeab",
+                    "surface": "#f7fafc",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "tertiary-container": "#38260b",
+                    "tertiary": "#211200",
+                    "on-background": "#181c1e",
+                    "surface-variant": "#e0e3e5",
+                    "outline-variant": "#c4c6cd",
+                    "on-tertiary-container": "#a88c69",
+                    "inverse-primary": "#b7c8de",
+                    "background": "#f7fafc",
+                    "on-surface": "#181c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "data-mono": ["Inter"],
+                    "display-score": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-score": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .prediction-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .prediction-card:hover {
+            box-shadow: 0px 4px 12px rgba(26, 43, 60, 0.05);
+        }
+        .sticky-save-bar {
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-margin-desktop max-w-full mx-auto">
+<div class="text-headline-md font-headline-md font-black text-primary">Prode Mundial</div>
+<div class="hidden md:flex items-center gap-lg h-full">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-sm text-body-sm" href="#">Fixture</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold font-body-sm text-body-sm" href="#">Predictions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-sm text-body-sm" href="#">Ranking</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-sm text-body-sm" href="#">Admin</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 p-2 hover:bg-surface-container-low rounded-full transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer active:opacity-80">
+<img alt="User profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBArWdoaV_aLlh_GvtrUQoJVfg_oE8xVrS5wvEIcb23gBAgX30X7J02knMx-1vmN4-xXrHYLUp7n0b54QDqYkSUBsZ9gNtRrkN-Uw6Yjz5qbSomewRBUvqOr-rhaDKi7OiryKJa51oCSregBklETAezLQWoJX4cco5OvdZhII916CMZqys5XYuj06mIlCofiWzSJaifQHYtCghW2ht-aaA0ZjYiZSV2Jct1tMsEUOsspLeQRN5DWoMT031k7nTJ2qFRqrCNIjVLZg"/>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-32 px-margin-desktop max-w-7xl mx-auto w-full">
+<div class="flex flex-col lg:flex-row gap-lg">
+<!-- Prediction Grid (8 Columns on Desktop) -->
+<div class="flex-grow space-y-lg">
+<header class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Group Stage Predictions</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Rank the teams in each group. First and second place advance to the Round of 16. Select your candidates for the best 3rd place finishes.</p>
+</header>
+<!-- Bento Grid of Groups -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Group A -->
+<section class="prediction-card bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-primary">Group A</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-2 py-1 rounded">6 DAYS LEFT</span>
+</div>
+<div class="space-y-sm">
+<!-- Team Row -->
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors group">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Netherlands</span>
+<div class="flex gap-xs">
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
+</div>
+</div>
+<!-- Repeat for Group Teams -->
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors group">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Senegal</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors group">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Ecuador</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors group">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Qatar</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Group B -->
+<section class="prediction-card bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-primary">Group B</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-2 py-1 rounded">6 DAYS LEFT</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">England</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none border-primary ring-1 ring-primary">
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">USA</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none border-primary ring-1 ring-primary">
+<option value="2">2nd</option>
+<option value="1">1st</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Iran</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="3">3rd</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="4">4th</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Wales</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="4">4th</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Group C -->
+<section class="prediction-card bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-primary">Group C</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-2 py-1 rounded">6 DAYS LEFT</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Argentina</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+<option value="1">1st</option>
+<option value="2">2nd</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Poland</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Mexico</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Saudi Arabia</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Group D -->
+<section class="prediction-card bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-primary">Group D</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-2 py-1 rounded">6 DAYS LEFT</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">France</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Denmark</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Tunisia</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+<div class="flex items-center gap-sm p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="w-8 h-6 bg-surface-container-highest rounded-sm flex-shrink-0"></div>
+<span class="flex-grow font-body-sm font-semibold">Australia</span>
+<select class="text-label-caps font-label-caps bg-surface border border-outline-variant rounded px-2 py-1 focus:ring-1 focus:ring-primary outline-none">
+<option value="">Rank</option>
+</select>
+</div>
+</div>
+</section>
+</div>
+<!-- Best 3rd Place Highlights -->
+<section class="mt-lg p-md bg-surface-container-high border border-outline-variant rounded-lg">
+<h3 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined">stars</span>
+                        Best 3rd Place Candidates
+                    </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Select 4 teams from your predicted 3rd place finishers to advance.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<button class="flex items-center justify-center p-sm bg-surface border border-outline-variant rounded-full text-label-caps font-label-caps text-on-surface-variant opacity-50 cursor-not-allowed">NONE SELECTED</button>
+<button class="flex items-center justify-center p-sm bg-surface border border-outline-variant rounded-full text-label-caps font-label-caps text-on-surface-variant opacity-50 cursor-not-allowed">NONE SELECTED</button>
+<button class="flex items-center justify-center p-sm bg-surface border border-outline-variant rounded-full text-label-caps font-label-caps text-on-surface-variant opacity-50 cursor-not-allowed">NONE SELECTED</button>
+<button class="flex items-center justify-center p-sm bg-surface border border-outline-variant rounded-full text-label-caps font-label-caps text-on-surface-variant opacity-50 cursor-not-allowed">NONE SELECTED</button>
+</div>
+</section>
+</div>
+<!-- Sidebar Summary (4 Columns on Desktop) -->
+<aside class="w-full lg:w-80 space-y-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg sticky top-24">
+<h2 class="font-headline-md text-headline-md text-primary mb-md">Prediction Summary</h2>
+<div class="space-y-md">
+<!-- Progress Bar -->
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">COMPLETION</span>
+<span class="font-data-mono text-data-mono text-primary">12 / 32</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-500" style="width: 37.5%"></div>
+</div>
+</div>
+<!-- Mini Group Stats -->
+<div class="space-y-xs">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-body-sm text-on-surface">Group A: Pending Selection</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-body-sm text-on-surface">Group B: Completed</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="font-body-sm text-on-surface-variant">Group C: Not Started</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="font-body-sm text-on-surface-variant">Group D: Not Started</span>
+</div>
+</div>
+<!-- Visual Card / Ad -->
+<div class="relative overflow-hidden rounded-lg aspect-video mt-md group cursor-pointer">
+<img alt="Atmospheric stadium visual" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A professional sports analytics dashboard overlaying a cinematic view of a futuristic football stadium at night. The lighting is low-key with sharp green and white neon accents, creating a high-performance war-room atmosphere. The background is softly blurred to keep focus on data density, using a palette of deep navy and pitch green." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbfPULx4OK2IKDDgfCJaobEv55tEk_E_KYEj96EdRCTQie8rm200BRiLDhbX5U6H4Qym_gG-BY6IiAQq-tLw83I7fMqHcBP-TRXdNfe7yxnbcjCBB8uz3Yu_7Ggl63oFsjKmwWf5D8Aa13--N7klcaplU-T1A3yjVSOeWniJcOMzfPRd_6U_4Pd-tEpVAcd2HcgeJanfJs0sgttNpf3OjbewCXWznYgZXRsXbJg20QRthVBCtY-F7IQqH8jyWP0J6Jx__VZPuKxA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-60"></div>
+<div class="absolute bottom-2 left-2 right-2">
+<p class="text-[10px] font-label-caps text-white uppercase tracking-widest opacity-80">Prode Mundial Pro</p>
+<p class="text-xs font-semibold text-white leading-tight">Unlock AI Match Analysis &amp; Probabilities</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Sticky Save Bar -->
+<div class="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant p-4 z-40 sticky-save-bar flex justify-center items-center">
+<div class="max-w-7xl w-full px-margin-desktop flex justify-between items-center">
+<div class="hidden md:block">
+<p class="font-label-caps text-label-caps text-on-surface-variant">CHANGES ARE NOT YET SAVED</p>
+</div>
+<div class="flex gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none px-lg py-sm border border-primary text-primary font-label-caps text-label-caps rounded transition-all hover:bg-surface-container-low active:opacity-80">DISCARD</button>
+<button class="flex-1 md:flex-none px-xl py-sm bg-secondary text-on-primary font-label-caps text-label-caps rounded transition-all hover:opacity-90 active:opacity-80 shadow-md">SAVE PREDICTIONS</button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-4 max-w-7xl mx-auto w-full">
+<div class="font-headline-md text-headline-md font-bold text-primary">Prode Mundial</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Prode Mundial. Professional Sports Analytics.</p>
+<div class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary underline font-label-caps text-label-caps transition-all duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary underline font-label-caps text-label-caps transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary underline font-label-caps text-label-caps transition-all duration-200" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for selection states
+        document.querySelectorAll('select').forEach(sel => {
+            sel.addEventListener('change', (e) => {
+                const parent = e.target.closest('.flex');
+                if (e.target.value !== "") {
+                    parent.classList.add('bg-primary-fixed');
+                    e.target.classList.add('border-primary', 'ring-1', 'ring-primary');
+                } else {
+                    parent.classList.remove('bg-primary-fixed');
+                    e.target.classList.remove('border-primary', 'ring-1', 'ring-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

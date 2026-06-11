@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Panel - Prode Mundial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#8192a7",
+                    "primary-container": "#1a2b3c",
+                    "tertiary-fixed": "#feddb5",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#041627",
+                    "surface-dim": "#d7dadc",
+                    "surface-bright": "#f7fafc",
+                    "primary-fixed-dim": "#b7c8de",
+                    "inverse-surface": "#2d3133",
+                    "surface-container": "#ebeef0",
+                    "on-secondary-container": "#3f6d38",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-primary-fixed": "#0b1d2d",
+                    "tertiary-fixed-dim": "#e1c29b",
+                    "on-tertiary-fixed-variant": "#584326",
+                    "on-tertiary-fixed": "#281802",
+                    "primary-fixed": "#d2e4fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary": "#3b6934",
+                    "outline": "#74777d",
+                    "surface-container-high": "#e5e9eb",
+                    "on-primary-fixed-variant": "#38485a",
+                    "surface-container-low": "#f1f4f6",
+                    "on-secondary-fixed": "#002201",
+                    "secondary-container": "#b9eeab",
+                    "surface": "#f7fafc",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "tertiary-container": "#38260b",
+                    "tertiary": "#211200",
+                    "on-background": "#181c1e",
+                    "surface-variant": "#e0e3e5",
+                    "outline-variant": "#c4c6cd",
+                    "on-tertiary-container": "#a88c69",
+                    "inverse-primary": "#b7c8de",
+                    "background": "#f7fafc",
+                    "on-surface": "#181c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "data-mono": ["Inter"],
+                    "display-score": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-score": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F4F7F9;
+        }
+        .admin-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8192a7;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-sm text-body-sm text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant h-16 flex justify-between items-center px-margin-desktop max-w-full mx-auto">
+<div class="text-headline-md font-headline-md font-black text-primary">Prode Mundial</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-sm text-body-sm" href="#">Fixture</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-sm text-body-sm" href="#">Predictions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-sm text-body-sm" href="#">Ranking</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold font-body-sm text-body-sm" href="#">Admin</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="User profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMU8FMupwwR2rcXZHX0v32k6Vl7GfGLZye_jcuVBpmES61Q3hsC-CvoluzJQKReHpqLNRNeDkPPx-BdjSsTs4uaGFzRZqKYanBZj_2jkdqwot9e6mrD475vN5gvKiALoeeXotDSDD39gtx0URFYiltMETsy0XUaViOu1aoyZMKPk4QD1WHWmgsg_33UfGyKijfUG9FrMj2tgfAfNNN7glLwjsQkTOkQA_Llzf_spahS12C1YwEUjpPx2eMZCwwN27vEB38Hb2UPw"/>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="mt-24 mb-16 px-margin-desktop max-w-7xl mx-auto w-full flex-grow">
+<!-- Notification Success Banner (Hidden by default) -->
+<div class="hidden mb-6 flex items-center justify-between p-4 bg-secondary-container text-on-secondary-container rounded-lg border border-secondary shadow-sm transition-all duration-300 transform scale-95 opacity-0" id="success-banner">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Changes saved successfully</span>
+</div>
+<button class="material-symbols-outlined text-xl" onclick="hideBanner()">close</button>
+</div>
+<header class="mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Admin Dashboard</h1>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Manage match data, user standings, and tournament brackets.</p>
+</header>
+<!-- Metrics Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-8">
+<div class="admin-card p-6 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Total Users</p>
+<p class="font-display-score text-display-score text-primary">1,284</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim">groups</span>
+</div>
+<div class="admin-card p-6 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Total Matches</p>
+<p class="font-display-score text-display-score text-primary">64</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim">sports_soccer</span>
+</div>
+<div class="admin-card p-6 rounded-lg flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Predictions</p>
+<p class="font-display-score text-display-score text-primary">42.1k</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim">analytics</span>
+</div>
+</div>
+<!-- Admin Actions Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Cargar Resultados Reales -->
+<div class="lg:col-span-8 admin-card rounded-lg overflow-hidden flex flex-col h-full min-h-[500px]">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">Cargar Resultados Reales</h3>
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity" onclick="showBanner()">SAVE ALL</button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase">Match ID</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase">Matchup</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase text-center">Score</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant uppercase">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-outline-variant hover:bg-surface-bright transition-colors">
+<td class="p-4 font-data-mono text-data-mono text-on-surface-variant">#GR-A1</td>
+<td class="p-4 font-body-sm text-body-sm font-semibold">Argentina vs. France</td>
+<td class="p-4">
+<div class="flex items-center justify-center gap-2">
+<input class="w-12 h-10 text-center border border-outline rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="3"/>
+<span class="text-on-surface-variant font-bold">-</span>
+<input class="w-12 h-10 text-center border border-outline rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="3"/>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">Completed</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-bright transition-colors">
+<td class="p-4 font-data-mono text-data-mono text-on-surface-variant">#GR-B4</td>
+<td class="p-4 font-body-sm text-body-sm font-semibold">Brazil vs. Germany</td>
+<td class="p-4">
+<div class="flex items-center justify-center gap-2">
+<input class="w-12 h-10 text-center border border-outline rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" placeholder="-" type="number"/>
+<span class="text-on-surface-variant font-bold">-</span>
+<input class="w-12 h-10 text-center border border-outline rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" placeholder="-" type="number"/>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded uppercase">Upcoming</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-bright transition-colors">
+<td class="p-4 font-data-mono text-data-mono text-on-surface-variant">#GR-C2</td>
+<td class="p-4 font-body-sm text-body-sm font-semibold">Japan vs. Spain</td>
+<td class="p-4">
+<div class="flex items-center justify-center gap-2">
+<input class="w-12 h-10 text-center border border-outline rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="2"/>
+<span class="text-on-surface-variant font-bold">-</span>
+<input class="w-12 h-10 text-center border border-outline rounded-lg focus:ring-1 focus:ring-primary focus:border-primary" type="number" value="1"/>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">Completed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Sidebar Actions -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Confirmar Cruces (Bracket View) -->
+<div class="admin-card p-6 rounded-lg">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Confirmar Cruces</h3>
+<span class="material-symbols-outlined text-on-surface-variant">account_tree</span>
+</div>
+<div class="space-y-4">
+<div class="p-3 bg-surface-container rounded border border-outline-variant">
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase mb-2">Quarter Final A</p>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<span class="font-bold">Netherlands</span>
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+</div>
+<div class="border-t border-outline-variant my-1"></div>
+<div class="flex justify-between items-center text-sm">
+<span class="font-bold">Argentina</span>
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-on-primary transition-all font-label-caps text-label-caps rounded-lg uppercase tracking-widest">Generate Brackets</button>
+</div>
+</div>
+<!-- Actualizar Standings -->
+<div class="admin-card p-6 rounded-lg bg-primary-container text-on-primary">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-4">Global Update</h3>
+<p class="font-body-sm text-body-sm mb-6 text-on-primary-container">Triggering this will re-calculate points for all 1,284 users based on the latest match results.</p>
+<button class="w-full py-4 bg-secondary text-on-secondary font-bold font-label-caps text-label-caps rounded-lg uppercase tracking-widest flex items-center justify-center gap-2 hover:opacity-90 transition-all" id="update-btn" onclick="triggerUpdate()">
+<span class="material-symbols-outlined" id="update-icon">refresh</span>
+<span id="update-text">Actualizar Standings</span>
+</button>
+</div>
+<!-- Admin Activity -->
+<div class="admin-card p-6 rounded-lg">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4">Recent Activity</h3>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary mt-1.5"></div>
+<div>
+<p class="text-sm font-bold">Results Loaded</p>
+<p class="text-xs text-on-surface-variant">Argentina vs France scores confirmed.</p>
+<p class="text-[10px] text-outline mt-1 uppercase">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
+<div>
+<p class="text-sm font-bold">Standings Updated</p>
+<p class="text-xs text-on-surface-variant">Global ranking refreshed for 1k+ users.</p>
+<p class="text-[10px] text-outline mt-1 uppercase">5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-4 max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">Prode Mundial</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm">© 2024 Prode Mundial. Professional Sports Analytics.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-all duration-200 underline uppercase" href="#">Terms</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-all duration-200 underline uppercase" href="#">Privacy</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-all duration-200 underline uppercase" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        function showBanner() {
+            const banner = document.getElementById('success-banner');
+            banner.classList.remove('hidden');
+            setTimeout(() => {
+                banner.classList.remove('scale-95', 'opacity-0');
+                banner.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            
+            // Auto hide after 5 seconds
+            setTimeout(hideBanner, 5000);
+        }
+
+        function hideBanner() {
+            const banner = document.getElementById('success-banner');
+            banner.classList.add('scale-95', 'opacity-0');
+            banner.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+            }, 300);
+        }
+
+        function triggerUpdate() {
+            const btn = document.getElementById('update-btn');
+            const icon = document.getElementById('update-icon');
+            const text = document.getElementById('update-text');
+            
+            icon.classList.add('animate-spin');
+            text.innerText = 'Calculating...';
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            btn.disabled = true;
+
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                text.innerText = 'Actualizar Standings';
+                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                btn.disabled = false;
+                showBanner();
+            }, 2000);
+        }
+    </script>
+</body></html>

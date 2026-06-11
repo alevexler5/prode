@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fixture - Prode Mundial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#8192a7",
+                    "primary-container": "#1a2b3c",
+                    "tertiary-fixed": "#feddb5",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#041627",
+                    "surface-dim": "#d7dadc",
+                    "surface-bright": "#f7fafc",
+                    "primary-fixed-dim": "#b7c8de",
+                    "inverse-surface": "#2d3133",
+                    "surface-container": "#ebeef0",
+                    "on-secondary-container": "#3f6d38",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-primary-fixed": "#0b1d2d",
+                    "tertiary-fixed-dim": "#e1c29b",
+                    "on-tertiary-fixed-variant": "#584326",
+                    "on-tertiary-fixed": "#281802",
+                    "primary-fixed": "#d2e4fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary": "#3b6934",
+                    "outline": "#74777d",
+                    "surface-container-high": "#e5e9eb",
+                    "on-primary-fixed-variant": "#38485a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#44474c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#4f6073",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#a1d494",
+                    "surface-container-low": "#f1f4f6",
+                    "on-secondary-fixed": "#002201",
+                    "secondary-container": "#b9eeab",
+                    "surface": "#f7fafc",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "tertiary-container": "#38260b",
+                    "tertiary": "#211200",
+                    "on-background": "#181c1e",
+                    "surface-variant": "#e0e3e5",
+                    "outline-variant": "#c4c6cd",
+                    "on-tertiary-container": "#a88c69",
+                    "inverse-primary": "#b7c8de",
+                    "background": "#f7fafc",
+                    "on-surface": "#181c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "data-mono": ["Inter"],
+                    "display-score": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-score": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { background-color: #f7fafc; }
+        .match-row-grid {
+            display: grid;
+            grid-template-columns: 80px 140px 1fr 140px 120px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .match-row-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="font-body-sm text-body-sm text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flat no shadows h-16">
+<div class="flex justify-between items-center h-full px-margin-desktop max-w-full mx-auto">
+<div class="text-headline-md font-headline-md font-black text-primary">Prode Mundial</div>
+<nav class="hidden md:flex items-center gap-8 h-full">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80 font-body-sm text-body-sm h-full flex items-center" href="#">Fixture</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold transition-colors duration-200 cursor-pointer active:opacity-80 font-body-sm text-body-sm h-full flex items-center" href="#">Fixture</a> <!-- Active State Simulation -->
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80 font-body-sm text-body-sm h-full flex items-center" href="#">Predictions</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80 font-body-sm text-body-sm h-full flex items-center" href="#">Ranking</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:opacity-80 font-body-sm text-body-sm h-full flex items-center" href="#">Admin</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-all">notifications</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbqg3OwgMz5ivqtOViogMobgYsyXBnY7TRr-byFfG_pEK2tJAsbFHBIrzApnBh8AWLLgvt8wB80QxD__aPD1vGoz3QLvaI8g3sR7uhbgx380qrH3TaLZ5QPJDBlrHG1KxkMmNb6ZEZOi7mcqqaxV4n-O7jRN2uE8D2EvZuovLXSaBBNbYhq4a3aPpEJFjmbsdXN9qzGqvgB3fL35HHOmdRXVjxOslZKaipDx0XZU736v7lQikPLTJvUUDaSxA1y3tzgD46CTensA"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-12 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full">
+<!-- Deadline Message -->
+<div class="mb-8 p-4 bg-primary text-on-primary rounded-lg flex items-center justify-between shadow-sm border border-primary-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed">alarm</span>
+<div>
+<p class="font-label-caps text-label-caps opacity-80">PROXIMO CIERRE DE PREDICCIONES</p>
+<p class="font-headline-md text-headline-md">Octavos de Final - Grupo A & B</p>
+</div>
+</div>
+<div class="text-right hidden sm:block">
+<p class="font-label-caps text-label-caps opacity-80">TIEMPO RESTANTE</p>
+<p class="font-display-score text-2xl">04:12:55</p>
+</div>
+</div>
+<!-- Filter Bar -->
+<section class="mb-8 bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-wrap items-center gap-4">
+<div class="flex flex-col gap-1 min-w-[150px]">
+<label class="font-label-caps text-label-caps text-on-surface-variant">FASE</label>
+<select class="bg-surface border-outline-variant rounded px-3 py-2 focus:ring-primary focus:border-primary">
+<option>Grupos</option>
+<option>Octavos de Final</option>
+<option>Cuartos de Final</option>
+<option>Semifinal</option>
+<option>Final</option>
+</select>
+</div>
+<div class="flex flex-col gap-1 min-w-[150px]">
+<label class="font-label-caps text-label-caps text-on-surface-variant">EQUIPO</label>
+<select class="bg-surface border-outline-variant rounded px-3 py-2 focus:ring-primary focus:border-primary">
+<option>Todos los equipos</option>
+<option>Argentina</option>
+<option>Brasil</option>
+<option>Francia</option>
+</select>
+</div>
+<div class="flex flex-col gap-1 min-w-[150px]">
+<label class="font-label-caps text-label-caps text-on-surface-variant">FECHA</label>
+<input class="bg-surface border-outline-variant rounded px-3 py-2 focus:ring-primary focus:border-primary" type="date"/>
+</div>
+<div class="ml-auto self-end">
+<button class="bg-primary text-on-primary px-6 py-2 rounded font-semibold hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                    Filtrar
+                </button>
+</div>
+</section>
+<!-- Fixture List -->
+<div class="space-y-12">
+<!-- Date Group 1 -->
+<section>
+<div class="flex items-center gap-4 mb-4">
+<h2 class="font-headline-md text-headline-md text-primary">Viernes, 14 de Junio</h2>
+<div class="h-px flex-grow bg-outline-variant"></div>
+</div>
+<div class="space-y-4">
+<!-- Match Row: Editable -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 md:p-6 hover:shadow-md transition-shadow">
+<div class="match-row-grid gap-4">
+<div class="text-center md:text-left">
+<p class="font-label-caps text-label-caps text-on-surface-variant">16:00</p>
+<p class="font-data-mono text-data-mono text-primary font-bold">LIVE</p>
+</div>
+<div class="text-on-surface-variant">
+<p class="font-body-sm text-body-sm">Allianz Arena</p>
+<p class="font-label-caps text-label-caps">GRUPO A</p>
+</div>
+<div class="flex items-center justify-center gap-8">
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Germany Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A sharp, detailed close-up of the national flag of Germany, featuring three horizontal bands of black, red, and gold. The fabric texture is visible, suggesting a professional sporting environment with high-end stadium lighting in the background creating a clean, corporate-modern aesthetic. The colors are deep and saturated, fitting the professional analytics brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvkmRd6AvE0MvwL4WZmPRoGt3rsOTHw-VPvKhHoaWrNTA-9I5xtGZrHJKtU3t6De16kC5UyaCH0LdfwVes1HRblnui5L3XcboTXc9tkC3s3kY7zxp1QlTA0ixRpJc0RERW9WqhzaHsfgdHxJyRgCjw6laJzkuzJq9npZVkLq2eqKP9Ge71Wk7FgjmZiuSVMXzxqZLnoQvAbJ_6KK7hIOIvn_JUOcpZen4QzyUK9Taw0hx5g4_XZsuUoNGLW8fIv2A4vAYTF8pVyA"/>
+<span class="font-headline-md text-headline-md">GER</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-12 h-12 text-center text-xl font-bold bg-surface-container border-2 border-primary rounded focus:outline-none" placeholder="-" type="number" value="2"/>
+<span class="font-bold text-outline">:</span>
+<input class="w-12 h-12 text-center text-xl font-bold bg-surface-container border-2 border-primary rounded focus:outline-none" placeholder="-" type="number" value="1"/>
+</div>
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Scotland Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A clean, professionally captured image of the national flag of Scotland, displaying a white saltire on a blue field. The lighting is crisp and modern, emphasizing the vivid blue and pure white colors. The composition is centered and balanced, suitable for a professional sports analytics platform with a sober and objective visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGEOAcTlwOUYxWGeRGxzuludmWoC0oO2kWcnTsqmoTwgSM-MIOB06gzo_raToDnQlTchLXvym98TQoxCMHxiRKJ5vJlJ1K8wAGMCcQpoA2geCp06b0MR7JNdGv_yoA-LYuc0UZDWOoar9orzQkxk_qF1DVkZVCnDe6264TYi7lZK_P79yBr3dgpIDmMa-3k2R8_LFqyKXpDid6vEtnW13qFQl5EBZsrGF2-z31Du0QjUy6gGBHKYur85wDjm0tvJmpN41SRQ9Z0g"/>
+<span class="font-headline-md text-headline-md">SCO</span>
+</div>
+</div>
+<div class="flex justify-center">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-caps text-label-caps">EN VIVO</span>
+</div>
+<div class="flex justify-end">
+<button class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-all">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Match Row: Locked -->
+<div class="bg-surface-container-low/50 border border-outline-variant border-dashed rounded-lg p-4 md:p-6 opacity-80">
+<div class="match-row-grid gap-4">
+<div class="text-center md:text-left">
+<p class="font-label-caps text-label-caps text-on-surface-variant">21:00</p>
+</div>
+<div class="text-on-surface-variant">
+<p class="font-body-sm text-body-sm">Signal Iduna</p>
+<p class="font-label-caps text-label-caps">GRUPO B</p>
+</div>
+<div class="flex items-center justify-center gap-8">
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Spain Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A high-resolution photograph of the Spanish national flag, featuring its red and yellow bands with the coat of arms. The lighting is studio-quality, creating a sober and professional appearance consistent with a top-tier sports data application. The fabric shows subtle movement, as if in a professional arena setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJEiF0iAiNXm9Pzhd2jbM0o9dWZZPCo2kChZFXLlr9HxdDgTeOrmg5lyZOcnH-Kktzguny7EQeTwerlMsA-4QnMm0yJvhRW9LALdN3uJE72pFUU555Qy7aMyrLsSLgwnYO77msO-nmLsv5icsHRe4B5UPrHE3aS7SiC4RQrqjr_OZvldunwMfb8fFb0WTMhmlXPjy6RLecLJake-5wzmlIg0sWXqUMrNmp9SRfFHEwEqla3DvpRXLPLidk9G8LYKN1nhpLqJn4-A"/>
+<span class="font-headline-md text-headline-md opacity-60">ESP</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-12 h-12 flex items-center justify-center text-xl font-bold bg-surface-dim/40 border border-outline-variant rounded text-on-surface-variant">1</div>
+<span class="font-bold text-outline">:</span>
+<div class="w-12 h-12 flex items-center justify-center text-xl font-bold bg-surface-dim/40 border border-outline-variant rounded text-on-surface-variant">1</div>
+</div>
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Croatia Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A professional and objective capture of the Croatian national flag, with its distinctive red and white checkerboard crest. The lighting is neutral and clear, highlighting the high-performance sports analytics environment. The image is crisp and detailed, maintaining a corporate-modern aesthetic through sophisticated color balance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFTY0965EkktlA8J5zQ-tS6-xr9VJ5yovvDv4D_EGaXZ8N5g7sinDFnDPp788qGlcsGhTFNl5Iojx1IsulsNqMBSYYn_pboBlIgdMqLga3tqV0OUpO4Xn6ecAaKJd_rkj2Tu3PA_X28lhkYKGBr_0fALDi1_2H-q9citwAhQUX5l4ItyprvccE1qcrYjGsSMbf1u5Acp6WH9MJRlWmFJ7UeE4ymbC-cPAsyWwvN9Yxtwey_snACdGEUv9PMzkE32RanEFhnKx4zA"/>
+<span class="font-headline-md text-headline-md opacity-60">CRO</span>
+</div>
+</div>
+<div class="flex justify-center">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                                    BLOQUEADO
+                                </span>
+</div>
+<div class="flex justify-end">
+<span class="material-symbols-outlined text-outline-variant">info</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Date Group 2 -->
+<section>
+<div class="flex items-center gap-4 mb-4">
+<h2 class="font-headline-md text-headline-md text-primary">Sábado, 15 de Junio</h2>
+<div class="h-px flex-grow bg-outline-variant"></div>
+</div>
+<div class="space-y-4">
+<!-- Match Row: Finalizado -->
+<div class="bg-surface-container-high/20 border border-outline-variant rounded-lg p-4 md:p-6">
+<div class="match-row-grid gap-4">
+<div class="text-center md:text-left">
+<p class="font-label-caps text-label-caps text-on-surface-variant">Final</p>
+</div>
+<div class="text-on-surface-variant">
+<p class="font-body-sm text-body-sm">Veltins Arena</p>
+<p class="font-label-caps text-label-caps">GRUPO C</p>
+</div>
+<div class="flex items-center justify-center gap-8">
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Italy Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A professional-grade image of the Italian tricolor flag—green, white, and red. The lighting is bright and modern, suggesting a clean light-mode interface. The fabric texture is crisp, reinforcing a sense of speed and high-performance data processing for an analytical war room environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0lSqNeZekalKa0ivHk9W_6cEToWqTTejDGcw16uNMkvE_pmTmX5_Io874FOXN8Z6unG24IbOfVQ5AtT3JEAdoWZDy6fIKibSytGk8Rldv8wM2VL-KUNy_e5fK6IPy_2_7AfllTu7yQLpspA0A5EZ559FCp7LOVSAYXVm7fECNL4RR7UjNOlDt06oAsA0k9s7M4czwmVbAggVimLiCP6iWhWQhdEXWcmTxL6oD7_-78So9_udjubk6wj9z2Jg97xOZiRMxx9f2lw"/>
+<span class="font-headline-md text-headline-md">ITA</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-12 h-12 flex items-center justify-center text-xl font-bold bg-surface-container-lowest border border-outline-variant rounded text-primary">2</div>
+<span class="font-bold text-primary">:</span>
+<div class="w-12 h-12 flex items-center justify-center text-xl font-bold bg-surface-container-lowest border border-outline-variant rounded text-primary">0</div>
+</div>
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Albania Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A stark, detailed image of the Albanian national flag featuring the black double-headed eagle on a red field. The composition is minimalist and professional, with a focus on color accuracy and rhythmic structure. The lighting is objective and corporate, suitable for an institutional sports journalism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsgKrEuznB2i_KH4x-xHj_m6f3Te2GehTC6QclQtS8R3O3qdqf_wKfLEnD8F5Bu9Gq9hxibqZy6jL9BqsFuyGHryY_3UgprvIi3ztWX-pAigc_vaBDW0F0XVeOEpNbaPTNwZfFQPzb72k0PbPPa8MSPXURyO5TFPvhyTM72qP7oN7vjeQZU27HXWrRuk6G4Kk7PyvlsNEefmkbbOrbnJLkGBhLCfqgQDxxilHf_9be6krvTt9PSzMbLL3gQSa6H4QbnXZdT82juQ"/>
+<span class="font-headline-md text-headline-md">ALB</span>
+</div>
+</div>
+<div class="flex justify-center">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full font-label-caps text-label-caps">FINALIZADO</span>
+</div>
+<div class="flex justify-end text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Match Row: Editable -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 md:p-6 hover:shadow-md transition-shadow relative overflow-hidden">
+<!-- Subtle Background Pattern for emphasis -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#041627_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="match-row-grid gap-4 relative z-10">
+<div class="text-center md:text-left">
+<p class="font-label-caps text-label-caps text-on-surface-variant">18:00</p>
+</div>
+<div class="text-on-surface-variant">
+<p class="font-body-sm text-body-sm">Red Bull Arena</p>
+<p class="font-label-caps text-label-caps">GRUPO D</p>
+</div>
+<div class="flex items-center justify-center gap-8">
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="France Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A clean, high-performance image of the French Tricolore national flag. The lighting is high-key and soft white, creating a bright and modern look. The composition is balanced and professional, fitting into a corporate-modern design system with a focus on data density and clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4oSIUP6JzGMBRXV2ocGHyJSK2draRGjEq_eo0ICYBqsGgYyxjV1fHEhHEglfpBrZLV6eFgN-2pcXS2TJpcGv8lOhIbthoytF_7vZlguH_eVkWu2oVOnJhEdkcewLcGpkvUYstXmIrwkLB19VNWqKlDhCHTqTt5IMIH9YvMVv1mBbaYytyPYHhs8w3g4QkRhkfDG_Y_LpqK2pBaYM-Wv7qiYrWD4qkHgsQeZ5NymRe1Y8plkdK_kIwzWUQfJb98sD8TLTJy92hHA"/>
+<span class="font-headline-md text-headline-md">FRA</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-12 h-12 text-center text-xl font-bold bg-white border border-outline-variant rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="?" type="number"/>
+<span class="font-bold text-outline-variant">:</span>
+<input class="w-12 h-12 text-center text-xl font-bold bg-white border border-outline-variant rounded focus:ring-2 focus:ring-primary focus:border-primary" placeholder="?" type="number"/>
+</div>
+<div class="flex flex-col items-center gap-2 w-24">
+<img alt="Austria Flag" class="w-12 h-8 object-cover rounded shadow-sm border border-outline-variant" data-alt="A sophisticated digital capture of the Austrian national flag, with its horizontal red and white stripes. The visual language is sober and objective, emphasizing high-quality data representation. The colors are crisp and vibrant, with a refined, institutional sports-journalism feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWzpmZOaV4JtZhbj1a2po9LqOqcA0qinYFS_O9P5soXqajJdon6_gU8032LYj4sb0oqMAdW62t8jjewV-OjVgQxlViRc0347Lutt4pyEAw5Ia4qt7D_Fcoaun0ohCNA4C2GxQSO2R0Zu2jUtD9wRHdpJTvxl0L46Aw0dpFdFXJuKS62MOnrJ3p_ulh8XYeufZ6MeMsLs2MFPNeLcczW5kb9-cxzgCNVaZarY7lV8ouS3cDhqM5WfygRrqKUNGhX80Hjj067tU9Xg"/>
+<span class="font-headline-md text-headline-md">AUT</span>
+</div>
+</div>
+<div class="flex justify-center">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-label-caps text-label-caps">EDITABLE</span>
+</div>
+<div class="flex justify-end">
+<button class="bg-primary text-on-primary px-4 py-2 rounded text-xs font-bold hover:opacity-90 transition-all uppercase tracking-wider">PREDECIR</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-4 max-w-full mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">Prode Mundial</div>
+<div class="text-on-surface-variant font-body-sm text-body-sm text-center md:text-left">
+                © 2024 Prode Mundial. Professional Sports Analytics.
+            </div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary underline transition-all duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary underline transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary underline transition-all duration-200" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-highest border-t border-outline-variant px-4 py-2 flex justify-around items-center z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">stadium</span>
+<span class="text-[10px] font-label-caps">Fixture</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="text-[10px] font-label-caps">Prode</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-[10px] font-label-caps">Ranking</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label-caps">Perfil</span>
+</button>
+</div>
+<script>
+        // Micro-interaction for score inputs
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-105');
+                input.parentElement.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-105');
+            });
+        });
+
+        // Simple Countdown logic
+        let hours = 4, minutes = 12, seconds = 55;
+        const timerDisplay = document.querySelector('.font-display-score');
+        if (timerDisplay) {
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; }
+                if (minutes < 0) { minutes = 59; hours--; }
+                if (hours < 0) hours = 0;
+                
+                timerDisplay.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+    </script>
+</body></html>
