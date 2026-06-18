@@ -8,7 +8,7 @@ import { ScoringService } from "../scoring/scoring.service";
 import { UpsertGroupPredictionsDto } from "./dto/upsert-group-predictions.dto";
 import { UpsertStandingsDto } from "./dto/upsert-standings.dto";
 
-const DEADLINE_MINUTES = 15;
+const GROUP_PREDICTIONS_DEADLINE = new Date("2026-06-22T03:00:00.000Z");
 
 @Injectable()
 export class GroupPredictionsService {
@@ -122,14 +122,8 @@ export class GroupPredictionsService {
     };
   }
 
-  private async assertGroupPredictionsEditable() {
-    const firstMatch = await this.prisma.match.findFirst({ orderBy: { kickoff: "asc" } });
-    if (!firstMatch) {
-      return;
-    }
-
-    const deadline = new Date(firstMatch.kickoff.getTime() - DEADLINE_MINUTES * 60 * 1000);
-    if (new Date() >= deadline) {
+  private assertGroupPredictionsEditable() {
+    if (new Date() >= GROUP_PREDICTIONS_DEADLINE) {
       throw new DomainException(DomainErrorCode.PREDICTION_LOCKED, "Group prediction deadline has passed");
     }
   }

@@ -5,6 +5,10 @@ import { GroupPredictionsService } from "./group-predictions.service";
 describe("GroupPredictionsService", () => {
   const service = new GroupPredictionsService({} as never, {} as never, {} as never);
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it("rejects duplicated teams inside a group payload", () => {
     expect(() =>
       (service as any).assertValidPayload({
@@ -111,5 +115,19 @@ describe("GroupPredictionsService", () => {
         ]
       })
     ).toThrow(DomainException);
+  });
+
+  it("allows group predictions until the end of 21/06/2026", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-06-22T02:59:59.999Z"));
+
+    expect(() => (service as any).assertGroupPredictionsEditable()).not.toThrow();
+  });
+
+  it("locks group predictions starting on 22/06/2026", () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-06-22T03:00:00.000Z"));
+
+    expect(() => (service as any).assertGroupPredictionsEditable()).toThrow(DomainException);
   });
 });
